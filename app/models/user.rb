@@ -4,6 +4,8 @@ class User < ApplicationRecord
   has_secure_password
   has_secure_token
 
+  has_many :notes
+
   validates :email, uniqueness: true, format: { with: VALID_EMAIL_REG }
   validates :password, length: { minimum: 6 }, on: :create
 end
