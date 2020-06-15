@@ -11,7 +11,7 @@ module UsersNotes
         end
         post do
           user = User.create!(params[:user])
-          present user
+          present user, with: UsersNotes::Entities::User
         end
 
         desc "Login on service"
@@ -25,7 +25,7 @@ module UsersNotes
           user = User.find_by(email: params[:user][:email].downcase)
           if user && user.authenticate(params[:user][:password])
             user.regenerate_token
-            present user
+            present user, with: UsersNotes::Entities::User
           else
             error!(:not_found, 404)
           end
