@@ -50,3 +50,6 @@ gem 'grape-entity'
 # api documentation
 gem 'grape-swagger'
 gem 'grape-swagger-rails'
+
+# send notifications
+gem 'rpush'
