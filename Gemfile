@@ -53,3 +53,6 @@ gem 'grape-swagger-rails'
 
 # send notifications
 gem 'fcm'
+
+#asynchronously jobs
+gem 'sidekiq'
