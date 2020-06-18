@@ -31,6 +31,11 @@ module UsersNotes
           note = Note.new(params[:note])
           note.user = current_user
           note.save!
+          Notifications::AndroidNotifications.new("AIzaSyDkux2sfjfwbWZyDRDhIY_eHUqa7FVScpA").
+              send_notification({ "notification": {
+                  title: "test",
+                  body: note.body
+              }})
           present note
         end
       end
