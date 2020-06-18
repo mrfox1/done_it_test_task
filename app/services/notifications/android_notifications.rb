@@ -1,22 +1,17 @@
+# include fcm gem for firebase cloud messaging
+require 'fcm'
+
 module Notifications
   class AndroidNotifications
-    attr_accessor :registrations_ids, :data
-
-    def initialize(app_name, auth_key)
-      @ids = registrations_ids
-      @app = Rpush::Gcm::App.new
-      @app.name = app_name
-      @app.auth_key = auth_key
-      @app.connection = 1
-      @app.save!
+    def initialize(auth_key)
+      @client ||= FCM.new(auth_key)
     end
 
-    def send_notification
-      n = Rpush::Gcm::Notification.new
-      n.app = @app
-      n.registration_ids = @ids
-      n.data = data
-      n.save!
+    def send_notification(message)
+      #test ids
+      registration_ids = ["fuOeAA-fPwI:APA91bFiUr7nN7g"]
+      response = @client.send(registration_ids, message)
+      p response
     end
   end
 end

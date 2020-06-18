@@ -52,4 +52,7 @@ gem 'grape-swagger'
 gem 'grape-swagger-rails'
 
 # send notifications
-gem 'rpush'
+gem 'fcm'
+
+#asynchronously jobs
+gem 'sidekiq'

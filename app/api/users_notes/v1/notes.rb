@@ -31,6 +31,13 @@ module UsersNotes
           note = Note.new(params[:note])
           note.user = current_user
           note.save!
+          time = note.note_time.to_time - Time.now
+          AndroidNotificationsWorker.perform_at(time.to_f.round.seconds.from_now,
+                                                { "notification": {
+                                                    title: "test",
+                                                    body: note.body
+                                                  }
+                                                })
           present note
         end
       end
